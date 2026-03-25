@@ -15,17 +15,32 @@ Create flask API's in minutes, [📹 watch the video tutorial](https://youtu.be/
 This template installs itself in a few seconds if you open it for free with Codespaces (recommended) or Gitpod.
 Skip this installation steps and jump to step 2 if you decide to use any of those services.
 
-> Important: The boiplerplate is made for python 3.10 but you can change the `python\\\_version` on the Pipfile.
+> Important: The boiplerplate is made for python 3.10 but you can change the `python\\\\\\\_version` on the Pipfile.
 
 The following steps are automatically runned withing gitpod, if you are doing a local installation you have to do them manually:
 
 ```sh
-pipenv install;
-rm -rf migrations;
-pipenv run init;
-pipenv run migrate;
-pipenv run upgrade;
-```
+pipenv install
+
+
+
+\# solo la primera vez o si hay errores
+
+rm -rf migrations
+
+rm -f test.db
+
+
+
+pipenv run init
+
+pipenv run migrate
+
+pipenv run upgrade
+
+
+
+pipenv run start```
 
 > Note: Codespaces users can connect to psql by typing: `psql -h localhost -U gitpod example`
 
@@ -53,7 +68,7 @@ $ pipenv run upgrade  # (to update your databse with the migrations)
 
 1. Once you run the `pipenv run start` command your API will start running live and you can open it by clicking in the "ports" tab and then clicking "open browser".
 
-> ✋ If you are working on a coding cloud like \\\[Codespaces](https://docs.github.com/en/codespaces/developing-in-codespaces/forwarding-ports-in-your-codespace#sharing-a-port) or \\\[Gitpod](https://www.gitpod.io/docs/configure/workspaces/ports#configure-port-visibility) make sure that your forwared port is public.
+> ✋ If you are working on a coding cloud like \\\\\\\[Codespaces](https://docs.github.com/en/codespaces/developing-in-codespaces/forwarding-ports-in-your-codespace#sharing-a-port) or \\\\\\\[Gitpod](https://www.gitpod.io/docs/configure/workspaces/ports#configure-port-visibility) make sure that your forwared port is public.
 
 ## Publish/Deploy your website!
 
