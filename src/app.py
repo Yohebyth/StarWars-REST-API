@@ -15,10 +15,10 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 db_url = os.getenv("DATABASE_URL")
-if db_url is not None:
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace("postgres://", "postgresql://")
+if not db_url or "localhost" in db_url:
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///test.db"
 else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_url.replace("postgres://", "postgresql://")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 MIGRATE = Migrate(app, db)
@@ -223,8 +223,7 @@ def habndle_delete_people(people_id):
 @app.route('/user/favorites', methods=['GET'])
 def handle_get_user_favorites():
 
-    body = request.get_json()    
-    user_id = body.get('user_id')
+    user_id = request.args.get('user_id')
     if not user_id:
         return jsonify({"msg": "user_id are required"}), 400    
     user_exist = User.query.filter_by(id = user_id).first()

@@ -54,11 +54,11 @@ class People(db.Model):
     __tablename__ = 'people'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(32), unique=True, nullable=False)
-    hair_color = db.Column(db.String(20), unique=True, nullable=False)
+    name = db.Column(db.String(32), nullable=False)
+    hair_color = db.Column(db.String(20), nullable=False)
     height = db.Column(db.Integer, nullable=False)
-    skin_color = db.Column(db.String(20), unique=True, nullable=False)
-    gender = db.Column(db.String(20), unique=True, nullable=False)
+    skin_color = db.Column(db.String(20), nullable=False)
+    gender = db.Column(db.String(20), nullable=False)
     img = db.Column(db.String(250))
 
     fav_peoples = db.relationship("Fav_People", back_populates="people",cascade="all, delete-orphan")
